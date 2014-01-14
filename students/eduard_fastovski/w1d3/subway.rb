@@ -10,53 +10,60 @@ subway['s'] = ["grand central", "33rd", "28th", "23rd", "union square", "Astor P
 
 
 puts "Which train are you getting on? n, l s?"
-	trainon = gets.chomp
+	@line_on = gets.chomp
 
 puts "Which stop are you getting on?"
-	stopon = gets.chomp    
+	@stopon = gets.chomp    
 
 puts "Which train are you getting off? n, l, s?"
-	trainoff = gets.chomp
+	@line_off = gets.chomp
 
 puts "Which stop are you getting off?"
-	stopoff = gets.chomp
+	@stopoff = gets.chomp
 
-index_on = (subway[trainon].index(stopon))
-index_off = (subway[trainoff].index(stopoff))
+#find the index of where they got on and where they got off - returns - 
+  index_on = (subway[@line_on].index(@stopon))
+  index_off = (subway[@line_off].index(@stopoff))
 
-unionin = subway[trainon].index("union square")
-unionout = subway[trainoff].index("union square")
+  # binding.pry
 
-if trainon != trainoff # if the person is changing lines
-	@numstops = (unionin - index_on).abs + (unionout - index_off).abs  
-	
-	stops1 = subway[trainon]
-	stops2 = subway[trainoff] # the hash it should search through
-	
-	stops_covered = []
-
-	if index_on < unionin
-		index_on.upto(unionin) { |stop| stops_covered.push(stops1[stop]) }
-	elsif  index_on > unionin
-		index_on.downto(unionin) { |stop| stops_covered.push(stops1[stop]) }
-	end
-
-	if index_off > unionout
-		unionout.upto(index_off) { |stop| stops_covered.push(stops2[stop]) }
-	elsif  index_off < unionout
-		unionout.downto(index_off) { |stop| stops_covered.push(stops2[stop]) }
-	end
+  # define the index of union square on the line they got on
+  unionin = subway[@line_on].index("union square")
+  # the index of union square on the line they got off
+  unionout = subway[@line_off].index("union square")
 
 
-	 # The ranges of the first hash up to union square + the second hash from union square
-	# this doesnt work because array[1..3] works but array[3..1] returns an empty array ONLY WORKS FOR ASTOR PLACE
-	# tried using reverse but then i have the opposite problem, grand central works, astor doesnt
+  if @line_on != @line_off # if the person is changing lines
+    
+    @numstops = (unionin - index_on).abs + (unionout - index_off).abs   # abs turns negatives into positives
+    
+    array_on = subway[@line_on]
+    array_off = subway[@line_off] # the hash it should search through
+    
+    stops_covered = []
 
-else
-	@numstops = index_off - index_on
-	stops = subway[trainon]
-	stops_covered = stops[index_on..index_off]
-end
+# THE FIRST HALF OF THE TRIP
+    #If the index where they got on is smaller than the index of union square, count the stations up to union
+    if index_on < unionin
+      index_on.upto(unionin) { |stop| stops_covered<<(array_on[stop]) } # push each stop to the stops_covered array
+    #If the index where they got on is higher than union square, list the stations down to union square
+    elsif  index_on > unionin
+      index_on.downto(unionin) { |stop| stops_covered<<(array_on[stop]) }
+    end
+# THE SECOND HALF OF THE TRIP
+    if index_off > unionout
+      unionout.upto(index_off) { |stop| stops_covered<<(array_off[stop]) }
+    elsif  index_off < unionout
+      unionout.downto(index_off) { |stop| stops_covered<<(array_off[stop]) }
+    end
+
+#if they are not changing lines
+  else
+    @numstops = index_off - index_on
+    stops = subway[@line_on]
+    stops_covered = stops[index_on..index_off]
+
+  end
 
 puts "It will take #{@numstops} stops"
 
