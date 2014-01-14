@@ -28,7 +28,7 @@ unionin = subway[trainon].index("union square")
 unionout = subway[trainoff].index("union square")
 
 if trainon != trainoff # if the person is changing lines
-	numstops = (unionin - index_on).abs + (unionout - index_off).abs  
+	@numstops = (unionin - index_on).abs + (unionout - index_off).abs  
 	
 	stops1 = subway[trainon]
 	stops2 = subway[trainoff] # the hash it should search through
@@ -53,12 +53,12 @@ if trainon != trainoff # if the person is changing lines
 	# tried using reverse but then i have the opposite problem, grand central works, astor doesnt
 
 else
-	numstops = index_off - index_on
+	@numstops = index_off - index_on
 	stops = subway[trainon]
 	stops_covered = stops[index_on..index_off]
 end
 
-puts "It will take #{numstops} stops"
+puts "It will take #{@numstops} stops"
 
 p stops_covered
 
