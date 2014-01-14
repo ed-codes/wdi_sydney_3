@@ -1,0 +1,59 @@
+<div class="row">
+  <form action="/" role="form" class="form-horizontal col-lg-offset-3 col-lg-6" method="get">
+    <div class="form-group">
+      <label for="start_station" class="col-sm-6 control-label">Select the line you wanna get in</label>
+      <div class="col-sm-6">
+        <select name="start_station" class="form-control">
+        <% @stations.each do |line, stations| %>
+          <optgroup label="<%= line %>">
+          <% stations.each do |station| %>
+            <option
+              value="<%= "#{line}-#{station}";%>"
+              <%= "selected" if params[:start_station] == "#{line}-#{station}" %>><%= station %>
+            </option>
+          <% end %>
+        <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="end_station" class="col-sm-6 control-label">Select the line you wanna get in</label>
+      <div class="col-sm-6">
+        <select name="end_station" class="form-control">
+        <% @stations.each do |line, stations| %>
+          <optgroup label="<%= line %>">
+          <% stations.each do |station| %>
+            <option
+              value="<%= "#{line}-#{station}";%>"
+              <%= "selected" if params[:end_station] == "#{line}-#{station}" %>><%= station %>
+            </option>
+          <% end %>
+        <% end %>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Find the path</button>
+  </form>
+</div>
+<% if @travel.size > 0 %>
+  <div class="row marginTop15">
+    <div class="col-lg-offset-4 col-lg-4">
+      <ul class="list-group">
+        <% i = 1; @travel.each do |station| %>
+          <% if station.kind_of?(Array) %>
+            <li class="list-group-item center alert">
+              <span class="badge"><%= i %></span>
+              <%= i += 1; station[0] %>
+            </li>
+          <% else %>
+            <li class="list-group-item center">
+              <span class="badge"><%= i %></span>
+              <%= i += 1; station %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
