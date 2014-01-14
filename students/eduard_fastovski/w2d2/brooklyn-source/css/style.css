@@ -1,0 +1,45 @@
+
+body {
+	font-size: 12px;
+	line-height: 17px;
+	font-family: "Times New Roman", serif;
+	color: #656565;
+}
+
+#container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #20222a;
+}
+
+p {
+	margin: 5px 0 15px 0;
+}
+
+.more a {
+	color: #3d99ca;
+}
+
+#date {
+	color: #3d99ca;
+	margin-bottom: 0px;
+}
+
+#press_images img {
+	float: left;
+	border: 5px solid #CCC;
+	margin-right: 6px;
+}
+
+/*MISC*/
+
+.clear {
+	clear:both;
+}
