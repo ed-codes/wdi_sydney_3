@@ -1,0 +1,57 @@
+body {
+  font: 14px/21px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #5b5b5b;
+  background: transparent url('/images/main-bg.png') 0 0;
+}
+
+
+
+.nav, ul{
+ padding: 0;
+  list-style-type: none;
+}
+
+.nav li {
+  display: inline-block;
+  margin: 0px 10px 10px 0px;
+}
+
+#container {
+  width: 960px;
+  margin: 50px auto;
+}
+
+label, input{
+  display: block;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 40px;
+/*  text-align: center;*/
+}
+
+h2 {
+  font-family: 'Droid Serif', serif;
+
+}
+
+h3, p, li {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+.info {
+  font-style: italic;
+  font-family: 'Lato', sans-serif;
+    font-weight: lighter;
+}
+
+.comments {
+  background: white;
+  padding: 20px;
+  border: 1px solid #d7d7d7;
+}

@@ -1,0 +1,31 @@
+ToDo
+
+!- Set up the database and table 
+!- Populate the table with some posts 
+!- build the home page to display posts
+!- do a h2 for title, h3 for description, p for body and for author/timestamp
+!- link the Post title to a show url
+!- create a show.erb page, move the body there
+!- build the new posts function
+!- create the delete function
+!- create the get edit page route
+!- create the edit page/form
+!- set the edit form action to go to posts/:id route
+!- create the table for comments
+!- add column post_id to the comments table
+!- populate it with some comments
+!- in the query I must link the two
+!- add the comments HTML into show.erb
+!- css a bit for readability
+!- create the new comment function
+
+!- change get /new to get /posts/new
+!- change post /create to post /posts
+- change  post /comment to post '/posts/:id/comment'
+- remove delete from the end of the URL and use delete route instead
+- change post line 74 from post to put
+
+USING ACTIVERECORD
+
+- sorting by time is broken for new posts made using activerecord
+- sorting by alphabet is also broken

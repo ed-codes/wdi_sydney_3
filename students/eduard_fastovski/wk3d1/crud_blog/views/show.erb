@@ -1,0 +1,43 @@
+
+<% @posts.each do |field| %>
+<h2><%= field['title'] %></h2>
+<h3><%= field['description'] %></h3>
+<p><%= field['body'] %></p>
+
+<p class="info"><%= field['author'] %></p>
+<p class="info"><%= field['created_at'] %></p>
+
+<a href="/posts/<%= @posts[0]['id'] %>/edit"><button>Edit</button></a>
+
+<form action="/posts/<%= field['id'] %>/delete" method="post">
+  <button>Delete</button>
+</form>
+
+<% end %>
+
+<h4>Comments</h4>
+
+<% @comments.each do |comment| %>
+
+<div class="comments">
+<p><%= comment['comment_body'] %></p>
+<p class="info"><%= comment['author'] %></p>
+<p class="info"><%= comment['created_at'] %></p>
+</div> <!-- end comments -->
+<% end %>
+
+<form action="/comment" method="post">
+  
+  <h4>New Comment</h4>
+
+  <label for="">Comment:</label>
+  <textarea name="comment_body"></textarea>
+  
+  <label for="">Author:</label>
+  <input type="text" name="author">
+
+  <input type="hidden" name="post_id" value="<%= @posts[0]['id'] %>">
+
+  <button>Post Comment</button>
+
+</form>
